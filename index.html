@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHECK — AI Content Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="#" aria-label="CHECK home">
+      <span class="brand-mark">C</span>
+      <span>CHECK</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">AI TEXT ANALYSIS</p>
+      <h1>Know what's real.<br><span>Check before you trust.</span></h1>
+      <p class="hero-copy">Analyze AI-generated patterns, suspicious similarities, and factual claims—all from one clear report.</p>
+    </section>
+
+    <section class="checker" aria-label="Content checker">
+      <div class="input-header">
+        <label for="text-input">Paste text to analyze</label>
+        <span id="word-count">0 words</span>
+      </div>
+      <textarea id="text-input" maxlength="10000" placeholder="Paste an article, essay, or other text here…"></textarea>
+      <div class="input-footer">
+        <button class="secondary" id="sample-button" type="button">Try a sample</button>
+        <button class="primary" id="check-button" type="button">
+          <span>Check content</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="report hidden" id="report" aria-live="polite">
+      <div class="report-heading">
+        <div>
+          <p class="eyebrow">ANALYSIS REPORT</p>
+          <h2>Your content check</h2>
+        </div>
+        <button class="icon-button" id="clear-button" type="button" aria-label="Clear report">×</button>
+      </div>
+
+      <div class="score-grid">
+        <article class="score-card">
+          <p>AI-writing indicators</p>
+          <div class="score-row"><strong id="ai-score">—</strong><span>%</span></div>
+          <div class="meter"><span id="ai-meter"></span></div>
+          <small id="ai-label">Waiting for analysis</small>
+        </article>
+        <article class="score-card">
+          <p>Similarity risk</p>
+          <div class="score-row"><strong id="similarity-score">—</strong><span>%</span></div>
+          <div class="meter"><span id="similarity-meter"></span></div>
+          <small id="similarity-label">Waiting for analysis</small>
+        </article>
+        <article class="score-card">
+          <p>Claims detected</p>
+          <div class="score-row"><strong id="claim-count">—</strong></div>
+          <small id="claim-label">Waiting for analysis</small>
+        </article>
+      </div>
+
+      <div class="details-grid">
+        <article class="detail-card">
+          <h3>Language signals</h3>
+          <ul id="signals-list"></ul>
+        </article>
+        <article class="detail-card">
+          <h3>Checkable claims</h3>
+          <div id="claims-list"></div>
+        </article>
+      </div>
+
+      <p class="disclaimer"><strong>Interpretation notice:</strong> AI-writing patterns cannot prove authorship. No result here proves a text is copied or false; use the findings as leads for further human review and source verification.</p>
+    </section>
+
+    <section class="features" id="features">
+      <article><span>01</span><h3>AI indicators</h3><p>Surface repetition, uniform phrasing, predictable structure, and other statistical signals.</p></article>
+      <article><span>02</span><h3>Similarity review</h3><p>Identify repeated phrases and estimate whether passages need a closer source check.</p></article>
+      <article><span>03</span><h3>Claim extraction</h3><p>Separate factual assertions from opinions and prepare them for source verification.</p></article>
+    </section>
+
+    <section class="how" id="how-it-works">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>Evidence over assumptions</h2>
+      <p>CHECK compares language patterns and extracts factual claims. It never replaces professional judgment or authoritative fact-checking.</p>
+    </section>
+  </main>
+
+  <footer><span>CHECK</span><small>Transparent content analysis</small></footer>
+  <script src="app.js"></script>
+</body>
+</html>
