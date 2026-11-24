@@ -20,12 +20,12 @@
 
   <main>
     <section class="hero">
-      <p class="eyebrow">AI TEXT ANALYSIS</p>
+      <p class="eyebrow">AI CONTENT ANALYSIS</p>
       <h1>Know what's real.<br><span>Check before you trust.</span></h1>
-      <p class="hero-copy">Analyze AI-generated patterns, suspicious similarities, and factual claims—all from one clear report.</p>
+      <p class="hero-copy">Review text signals, image provenance clues, and factual claims—all with transparent limitations.</p>
     </section>
 
-    <section class="checker" aria-label="Content checker">
+    <section class="checker" aria-label="Text content checker">
       <div class="input-header">
         <label for="text-input">Paste text to analyze</label>
         <span id="word-count">0 words</span>
@@ -33,66 +33,64 @@
       <textarea id="text-input" maxlength="10000" placeholder="Paste an article, essay, or other text here…"></textarea>
       <div class="input-footer">
         <button class="secondary" id="sample-button" type="button">Try a sample</button>
-        <button class="primary" id="check-button" type="button">
-          <span>Check content</span>
-          <span aria-hidden="true">→</span>
-        </button>
+        <button class="primary" id="check-button" type="button"><span>Check content</span><span aria-hidden="true">→</span></button>
       </div>
     </section>
 
     <section class="report hidden" id="report" aria-live="polite">
       <div class="report-heading">
-        <div>
-          <p class="eyebrow">ANALYSIS REPORT</p>
-          <h2>Your content check</h2>
-        </div>
+        <div><p class="eyebrow">TEXT ANALYSIS REPORT</p><h2>Your content check</h2></div>
         <button class="icon-button" id="clear-button" type="button" aria-label="Clear report">×</button>
       </div>
-
       <div class="score-grid">
-        <article class="score-card">
-          <p>AI-writing indicators</p>
-          <div class="score-row"><strong id="ai-score">—</strong><span>%</span></div>
-          <div class="meter"><span id="ai-meter"></span></div>
-          <small id="ai-label">Waiting for analysis</small>
-        </article>
-        <article class="score-card">
-          <p>Similarity risk</p>
-          <div class="score-row"><strong id="similarity-score">—</strong><span>%</span></div>
-          <div class="meter"><span id="similarity-meter"></span></div>
-          <small id="similarity-label">Waiting for analysis</small>
-        </article>
-        <article class="score-card">
-          <p>Claims detected</p>
-          <div class="score-row"><strong id="claim-count">—</strong></div>
-          <small id="claim-label">Waiting for analysis</small>
-        </article>
+        <article class="score-card"><p>AI-writing indicators</p><div class="score-row"><strong id="ai-score">—</strong><span>%</span></div><div class="meter"><span id="ai-meter"></span></div><small id="ai-label">Waiting for analysis</small></article>
+        <article class="score-card"><p>Similarity risk</p><div class="score-row"><strong id="similarity-score">—</strong><span>%</span></div><div class="meter"><span id="similarity-meter"></span></div><small id="similarity-label">Waiting for analysis</small></article>
+        <article class="score-card"><p>Claims detected</p><div class="score-row"><strong id="claim-count">—</strong></div><small id="claim-label">Waiting for analysis</small></article>
       </div>
-
       <div class="details-grid">
-        <article class="detail-card">
-          <h3>Language signals</h3>
-          <ul id="signals-list"></ul>
-        </article>
-        <article class="detail-card">
-          <h3>Checkable claims</h3>
-          <div id="claims-list"></div>
-        </article>
+        <article class="detail-card"><h3>Language signals</h3><ul id="signals-list"></ul></article>
+        <article class="detail-card"><h3>Checkable claims</h3><div id="claims-list"></div></article>
       </div>
+      <p class="disclaimer"><strong>Interpretation notice:</strong> AI-writing patterns cannot prove authorship. Similarity here only measures repetition inside the submitted text, not matches against the internet. Verify factual claims against reliable sources.</p>
+    </section>
 
-      <p class="disclaimer"><strong>Interpretation notice:</strong> AI-writing patterns cannot prove authorship. No result here proves a text is copied or false; use the findings as leads for further human review and source verification.</p>
+    <section class="image-checker" aria-labelledby="image-title">
+      <div class="image-copy">
+        <p class="eyebrow">IMAGE PROVENANCE</p>
+        <h2 id="image-title">Check an image</h2>
+        <p>Upload an image to look for embedded AI-generator or provenance metadata. CHECK processes it in your browser and does not upload it.</p>
+      </div>
+      <label class="upload-area" id="upload-area" for="image-input">
+        <span class="upload-icon" aria-hidden="true">↑</span>
+        <strong>Choose an image or drop it here</strong>
+        <span>PNG, JPG, WEBP or GIF · up to 15 MB</span>
+        <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+      </label>
+      <p class="image-error hidden" id="image-error" role="alert"></p>
+      <div class="image-preview hidden" id="image-preview-wrap">
+        <img id="image-preview" alt="Preview of selected image">
+        <div class="image-file-info"><strong id="image-name"></strong><span id="image-dimensions"></span></div>
+        <button class="secondary" id="remove-image" type="button">Remove image</button>
+      </div>
+      <button class="primary image-button" id="check-image-button" type="button" disabled><span>Check image metadata</span><span aria-hidden="true">→</span></button>
+      <section class="image-result hidden" id="image-result" aria-live="polite">
+        <h3 id="image-result-title">Image metadata review</h3>
+        <p id="image-result-summary"></p>
+        <ul id="image-metadata-list"></ul>
+        <p class="disclaimer"><strong>Important:</strong> This checks metadata only; it is not an AI image classifier and cannot determine image authorship from pixels. Metadata can be removed or altered. No generator tag does not mean an image is human-made, and a tag is a clue—not proof.</p>
+      </section>
     </section>
 
     <section class="features" id="features">
       <article><span>01</span><h3>AI indicators</h3><p>Surface repetition, uniform phrasing, predictable structure, and other statistical signals.</p></article>
-      <article><span>02</span><h3>Similarity review</h3><p>Identify repeated phrases and estimate whether passages need a closer source check.</p></article>
+      <article><span>02</span><h3>Image provenance</h3><p>Look for embedded creator and AI-tool metadata, with clear limits on what it can establish.</p></article>
       <article><span>03</span><h3>Claim extraction</h3><p>Separate factual assertions from opinions and prepare them for source verification.</p></article>
     </section>
 
     <section class="how" id="how-it-works">
       <p class="eyebrow">HOW IT WORKS</p>
       <h2>Evidence over assumptions</h2>
-      <p>CHECK compares language patterns and extracts factual claims. It never replaces professional judgment or authoritative fact-checking.</p>
+      <p>CHECK analyzes text patterns, image metadata, and factual claims. It never replaces professional judgment or authoritative fact-checking.</p>
     </section>
   </main>
 
