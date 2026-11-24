@@ -69,7 +69,8 @@ function analyze(text) {
 }
 
 function setMeter(selector, value) {
-  document.querySelector(selector).style.width = `${value}%`;
+  const meter = document.querySelector(selector);
+  if (meter) meter.style.width = `${value}%`;
 }
 
 function escapeHtml(text) {
@@ -93,10 +94,7 @@ checkButton.addEventListener('click', () => {
   input.setCustomValidity('');
 
   const result = analyze(text);
-  if (!result) {
-    input.focus();
-    return;
-  }
+  if (!result) return;
 
   report.classList.remove('hidden');
   document.querySelector('#ai-score').textContent = result.aiScore;
